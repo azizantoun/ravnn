@@ -19,6 +19,8 @@ function HomePage() {
   useEffect(() => {
     async function getPosts() {
       const allPosts = await fetchEntries()
+      console.log(allPosts);
+
       setPosts([...allPosts])
     }
     getPosts()
@@ -27,7 +29,7 @@ function HomePage() {
   return (
     <>
       <Head>
-        <title>Next.js + Contentful</title>
+        <title>Ravnn</title>
         <link
           rel="stylesheet"
           href="https://css.zeit.sh/v1.css"
@@ -40,9 +42,9 @@ function HomePage() {
               alt={p.fields.alt}
               date={p.fields.date}
               key={p.fields.title}
-              image={p.fields.image}
+              image={p.fields.image.fields.file.url}
               title={p.fields.title}
-              url={p.fields.url}
+              url={p.fields.slug}
             />
           ))
         : null}
