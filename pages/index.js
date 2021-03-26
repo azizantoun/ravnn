@@ -11,9 +11,7 @@ function HomePage() {
         <title>Ravnn</title>
       </Head>
       <Layout>
-
           <Explore/>
-
       </Layout>
 
     

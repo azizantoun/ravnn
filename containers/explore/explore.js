@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import Welcome from '../../components/welcome/welcome';
+import FeaturedQuote from '../../components/quote/quote';
 import { useEffect, useState } from 'react'
 import Link from 'next/link';
 const Explore = () =>{
@@ -33,6 +35,11 @@ const Explore = () =>{
 
       return (
           <div>
+
+          <Welcome name="Aziz Antoun"/>
+          <FeaturedQuote/>
+
+
                 {posts.length > 0
         ? posts.map((p) => (
 
