@@ -17,8 +17,15 @@ const NavBar = styled.nav`
     bottom:0;
     width:235px;
     border-right:1px solid #E6EFFB;
-    padding:24px;
+    padding:24px 15px;
     background: linear-gradient(0deg, rgba(2,0,36,0) 0%, rgba(244,247,249,1) 100%);
+`;
+
+const NavWrapper = styled.div`
+
+    max-height:100vh;
+    overflow:auto;
+    padding-bottom:120px;
 `;
 
 const Logo = styled.a`
@@ -26,7 +33,7 @@ const Logo = styled.a`
     height:44px;
     background-image:url(${logo});
     display:block;
-    margin:auto auto 50px auto;
+    margin:auto auto 30px auto;
     background-size:cover;
     background-position:center center;
 `;
@@ -36,6 +43,9 @@ const NavTitle = styled.div`
     text-transform:uppercase;
     font-size:16px;
     margin-top:30px;
+    &:first-of-type{
+        margin-top:0;
+    }
 `;
 
 
@@ -47,15 +57,21 @@ const List = styled.ul`
 const ListItem = styled.li`
     list-style-type:none;
     font-size:14px;
-    margin-top:20px;
+    margin-top:5px;
     color:#2D2D2D;
-    transition:color 200ms ease;
+    transition:color 200ms ease, background-color 200ms ease;
     cursor:pointer;
+    padding:10px 5px;
+    border-radius:10px;
     &:hover{
+        background:#E6EFFB;
         color:rgba(0,0,0,0.55);
     }
     a{
         display:block;
+    }
+    svg{
+        width:25px;
     }
 `
 const ListItemLabel = styled.span`
@@ -106,6 +122,7 @@ const LogoutIcon = styled(LogoutCircleR)`
 const Nav = () => (
   <NavBar>
     <Logo></Logo>
+    <NavWrapper>
     <NavTitle>Explore</NavTitle>
     <List>
         <ListItem><a href=""><ExploreIcon/> <ListItemLabel>Discover </ListItemLabel> </a> </ListItem>
@@ -130,7 +147,7 @@ const Nav = () => (
         <ListItem><a href=""><SettingsIcon/> <ListItemLabel>Settings </ListItemLabel> </a> </ListItem>
         <ListItem><a href=""><LogoutIcon/> <ListItemLabel>Logout </ListItemLabel> </a> </ListItem>
     </List>
-
+    </NavWrapper>
 
 
   </NavBar>

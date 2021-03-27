@@ -1,68 +1,52 @@
 import React from 'react';
-import styled from 'styled-components';
 import Welcome from '../../components/welcome/welcome';
 import FeaturedQuote from '../../components/quote/quote';
+import {fetchFeaturedPost, fetchBooks} from '../../utils/gateway';
 import { useEffect, useState } from 'react'
-import Link from 'next/link';
+import Section from '../../components/section/section';
 const Explore = () =>{
 
-    const client = require('contentful').createClient({
-        space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-        accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
-      })
-      
-
-
-
-    async function fetchEntries() {
-        const entries = await client.getEntries()
-        if (entries.items) return entries.items
-        console.log(`Error getting Entries for ${contentType.name}.`)
+    const [featuredPost, setFeaturedPost] = useState([])
+  
+    useEffect(() => {
+      async function getPosts() {
+        const featured = await fetchFeaturedPost('Post')    
+        setFeaturedPost([...featured])
       }
-    
-      const [posts, setPosts] = useState([])
-    
-      useEffect(() => {
-        async function getPosts() {
-          const allPosts = await fetchEntries()
-          console.log(allPosts);
-    
-          setPosts([...allPosts])
-        }
-        getPosts()
-      }, [])
+      getPosts()
+    }, [])
+
+
+    const [books, setBooks] = useState([])
+  
+    useEffect(() => {
+      async function getBooks() {
+        const books = await fetchBooks()    
+        setBooks([...books])
+      }
+      getBooks()
+    }, [])  
+
+
 
 
       return (
           <div>
 
-          <Welcome name="Aziz Antoun"/>
-          <FeaturedQuote/>
-
-
-                {posts.length > 0
-        ? posts.map((p) => (
-
-              <>
-            <Link href={`/post/${p.fields.slug}`}>
-                {p.fields.title}
-            </Link>
-            
-            </>
-           
-          ))
-        : null}
+          <Welcome name="Aziz Antoun"/>  
+          {featuredPost?featuredPost.map((p)=>{
+            return <FeaturedQuote entries={p.fields} key={p.fields.slug}/>
+          }):null}
+        
+        
+          <Section books={books} />
+          <Section/>
+          <Section/>
+          <Section/>
+          
           </div>
       )
 }
 
-{/* <Post
-alt={p.fields.alt}
-date={p.fields.date}
-key={p.fields.title}
-image={p.fields.image.fields.file.url}
-title={p.fields.title}
-url={p.fields.slug}
-/> */}
 
 export default Explore;
