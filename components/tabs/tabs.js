@@ -32,7 +32,7 @@ const Tabs = (props) => {
             <TabsContainer>
                 {props.items.map((tab) => {
                     return (
-                        <TabItem className={tab.active ? 'active' : null}>{tab.name}</TabItem>
+                        <TabItem className={tab.active ? 'active' : null} key={tab.name}>{tab.name}</TabItem>
                     )
                 })}
 

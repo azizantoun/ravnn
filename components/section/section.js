@@ -1,11 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { QuoteLeft } from '@styled-icons/boxicons-solid/QuoteLeft';
-import { getImage, getContenType } from '../../utils/getData';
-import PlayIcon from '../PlayIcon/PlayIcon';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-
-
+import Card from '../card/card';
 
 const ContentSection = styled.section`
     display:block;
@@ -56,44 +52,13 @@ const SectionTitle = styled.h3`
 `;
 
 const SectionContent = styled.div`
-    display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: flex-start;
-	align-items: center;
-	align-content: stretch;
+    max-width:100%;
+    display:grid;
+    grid-template-rows:repeat(2, 310px);
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 17px;
 `;
 
-const Card = styled.div`
-    width:230px;
-    border:1px solid #E6EFFB;
-    border-radius:10px;
-    padding:14px;
-    margin:0px 15px 0px 0;
-`;
-const CardCover = styled.div`
-    width:200px;
-    height:155px;
-    display:block;
-    border-radius:10px;
-    background-size:cover;
-    background-repeat:no-repeat;
-    background-position:center center;
-    border:1px solid #E6EFFB;
-    position:relative;
-`;
-
-const CardTitle = styled.div`
-   font-family:"Abel";
-    font-size:18px;
-    color:#2D2D2D;
-    margin-top:10px;
-`;
-const CardSubtitle = styled.div`
-    font-size:15px;
-    color:#7C8DB5;
-    margin-top:5px;
-`;
 
 const Section = (props) => {
     return (
@@ -102,26 +67,15 @@ const Section = (props) => {
             <ContentSection>
                 <SectionHeader>
                     <SectionTitle>
-                        Audio Books for you
-                               </SectionTitle>
+                        Audio Books
+                    </SectionTitle>
                 </SectionHeader>
-
                 <SectionContent>
                     {props.books ? props.books.map((b) => {
-                        return (<Card key={b.fields.slug} book={b}>
-
-                            <CardCover style={{ "backgroundImage": `url(${getImage(b.fields)})` }} >
-                                <PlayIcon />
-                            </CardCover>
-                            <CardTitle>{b.fields.title}</CardTitle>
-                            <CardSubtitle>{b.fields.author.fields.name}</CardSubtitle>
-
-                        </Card>)
+                        console.log(b);
+                        return (<Card item={b} key={b.fields.slug} ></Card>)
                     })
                         : null}
-
-
-
                 </SectionContent>
 
             </ContentSection>

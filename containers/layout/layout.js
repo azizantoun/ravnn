@@ -17,6 +17,7 @@ const MainContent = styled.div`
   flex: 1;
   min-height:100vh;
   padding:40px;
+  max-width: 100%;
 `;
 
 const SideBar = styled.aside`
@@ -26,7 +27,7 @@ const SideBar = styled.aside`
 `;
 
 
-const Sticky=styled.div`
+const Sticky = styled.div`
   position:sticky;
   top:0;
 `;
@@ -34,31 +35,31 @@ const Sticky=styled.div`
 
 
 
-const Layout =({children}) =>{
-    return(
-        <>
-        <div>
+const Layout = ({ children }) => {
+  return (
+    <>
+      <div>
         <Nav></Nav>
-      <MainWrapper>
-      <MainInner>
-      <MainContent>
-      {children}
-      </MainContent>
-      <SideBar>
-        
-      
-    
-          <Sticky></Sticky>
+        <MainWrapper>
+          <MainInner>
+            <MainContent>
+              {children}
+            </MainContent>
+            <SideBar>
 
 
-      </SideBar>
-      </MainInner>
-     
 
-      </MainWrapper>
-        </div>
-        </>
-    )
+              <Sticky></Sticky>
+
+
+            </SideBar>
+          </MainInner>
+
+
+        </MainWrapper>
+      </div>
+    </>
+  )
 }
 
 export default Layout;

@@ -27,22 +27,22 @@ const StyledPlayButton = styled.i`
     box-sizing: border-box;
     position: absolute;
     width: 0;
-    height: 10px;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-left: 6px solid;
-    top: 6px;
-    left: 9px;
+    height: 5px;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-left: 5px solid #92D8B4;
+    top: 11px;
+    left: 12px;
   }
 `;
 const PlayIcon = (props) => {
-    return (
-        <div>
-            <PlayFrame>
-                <StyledPlayButton />
-            </PlayFrame>
-        </div>
-    )
+  return (
+    <div>
+      <PlayFrame>
+        <StyledPlayButton />
+      </PlayFrame>
+    </div>
+  )
 }
 
 

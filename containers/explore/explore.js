@@ -38,7 +38,7 @@ const Explore = () => {
       const idChecker = [];
       items.map(post => {
         const contentTypeId = post.fields.contentType.sys.id;
-        const contentTypeName = post.fields.contentType.fields.contentTypeName;
+        const contentTypeName = post.fields.contentType.fields.tabTitle;
         const tab = { id: contentTypeId, name: contentTypeName, active: false };
         !idChecker.includes(contentTypeId) ? activeTabs.push(tab) : null;
         idChecker.push(contentTypeId);
@@ -64,9 +64,6 @@ const Explore = () => {
 
 
       <Section books={books} />
-      <Section />
-      <Section />
-      <Section />
 
     </div>
   )
