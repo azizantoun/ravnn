@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import logo from '../../public/images/ravnn-logo.png';
-import {Explore} from '@styled-icons/material/Explore'
-import {Zap} from '@styled-icons/boxicons-solid/Zap';
-import {ChevronDoubleUp} from '@styled-icons/bootstrap/ChevronDoubleUp'
-import {Hashtag} from '@styled-icons/fa-solid/Hashtag';
-import {AccountCircle} from '@styled-icons/remix-fill/AccountCircle';
-import {History} from '@styled-icons/boxicons-regular/History';
-import {Settings2} from '@styled-icons/evaicons-solid/Settings2';
-import {LogoutCircleR} from '@styled-icons/remix-line/LogoutCircleR';
+import { Explore } from '@styled-icons/material/Explore'
+import { Zap } from '@styled-icons/boxicons-solid/Zap';
+import { ChevronDoubleUp } from '@styled-icons/bootstrap/ChevronDoubleUp'
+import { Hashtag } from '@styled-icons/fa-solid/Hashtag';
+import { AccountCircle } from '@styled-icons/remix-fill/AccountCircle';
+import { History } from '@styled-icons/boxicons-regular/History';
+import { Settings2 } from '@styled-icons/evaicons-solid/Settings2';
+import { LogoutCircleR } from '@styled-icons/remix-line/LogoutCircleR';
 
 const NavBar = styled.nav`
     position:fixed;
@@ -18,14 +18,26 @@ const NavBar = styled.nav`
     width:235px;
     border-right:1px solid #E6EFFB;
     padding:24px 15px;
+`;
+
+
+const TopGradient = styled.span`
     background: linear-gradient(0deg, rgba(2,0,36,0) 0%, rgba(244,247,249,1) 100%);
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:200px;
+    z-index:0;
+
 `;
 
 const NavWrapper = styled.div`
-
     max-height:100vh;
     overflow:auto;
     padding-bottom:120px;
+    position:relative;
+    z-index:1;
 `;
 
 const Logo = styled.a`
@@ -36,6 +48,8 @@ const Logo = styled.a`
     margin:auto auto 30px auto;
     background-size:cover;
     background-position:center center;
+    position:relative;
+    z-index:0;
 `;
 
 const NavTitle = styled.div`
@@ -80,7 +94,7 @@ const ListItemLabel = styled.span`
 `;
 
 
-const iconsStyle =  `
+const iconsStyle = `
     color: #92D8B4;
     width:25px;
     height:25px;
@@ -99,7 +113,7 @@ const RecommendationIcon = styled(ChevronDoubleUp)`
  ${iconsStyle}
  `;
 
-const HashtagIcon = styled(Hashtag) `
+const HashtagIcon = styled(Hashtag)`
     ${iconsStyle};
 `;
 
@@ -119,38 +133,44 @@ const LogoutIcon = styled(LogoutCircleR)`
 `
 
 
+const disabledNavClick = () => {
+    alert("User personalization feature is coming soon, stay tuned!");
+}
+
+
 const Nav = () => (
-  <NavBar>
-    <Logo></Logo>
-    <NavWrapper>
-    <NavTitle>Explore</NavTitle>
-    <List>
-        <ListItem><a href=""><ExploreIcon/> <ListItemLabel>Discover </ListItemLabel> </a> </ListItem>
-        <ListItem><a href=""><TrendingIcon/> <ListItemLabel>Trending </ListItemLabel> </a> </ListItem>
-        <ListItem><a href=""><RecommendationIcon/> <ListItemLabel>Recommendations </ListItemLabel> </a> </ListItem>
-    </List>
+    <NavBar>
+        <TopGradient />
+        <Logo></Logo>
+        <NavWrapper>
+            <NavTitle>Explore</NavTitle>
+            <List>
+                <ListItem><a href=""><ExploreIcon /> <ListItemLabel>Discover </ListItemLabel> </a> </ListItem>
+                <ListItem><a href=""><TrendingIcon /> <ListItemLabel>Trending </ListItemLabel> </a> </ListItem>
+                <ListItem><a href=""><RecommendationIcon /> <ListItemLabel>Recommendations </ListItemLabel> </a> </ListItem>
+            </List>
 
 
-    <NavTitle>My Topics</NavTitle>
-    <List>
-        <ListItem><a href=""><HashtagIcon/> <ListItemLabel>ProductManagement </ListItemLabel> </a> </ListItem>
-        <ListItem><a href=""><HashtagIcon/> <ListItemLabel>Politics </ListItemLabel> </a> </ListItem>
-        <ListItem><a href=""><HashtagIcon/> <ListItemLabel>Leadership </ListItemLabel> </a> </ListItem>
-        <ListItem><a href=""><HashtagIcon/> <ListItemLabel>GrowthHacking </ListItemLabel> </a> </ListItem>
-        <ListItem><a href=""><HashtagIcon/> <ListItemLabel>Startups </ListItemLabel> </a> </ListItem>
-    </List>
+            <NavTitle>My Topics</NavTitle>
+            <List>
+                <ListItem><a href=""><HashtagIcon /> <ListItemLabel>ProductManagement </ListItemLabel> </a> </ListItem>
+                <ListItem><a href=""><HashtagIcon /> <ListItemLabel>Politics </ListItemLabel> </a> </ListItem>
+                <ListItem><a href=""><HashtagIcon /> <ListItemLabel>Leadership </ListItemLabel> </a> </ListItem>
+                <ListItem><a href=""><HashtagIcon /> <ListItemLabel>GrowthHacking </ListItemLabel> </a> </ListItem>
+                <ListItem><a href=""><HashtagIcon /> <ListItemLabel>Startups </ListItemLabel> </a> </ListItem>
+            </List>
 
-    <NavTitle>Account</NavTitle>
-    <List>
-        <ListItem><a href=""><AccountIcon/> <ListItemLabel>My account </ListItemLabel> </a> </ListItem>
-        <ListItem><a href=""><HistoryIcon/> <ListItemLabel>History </ListItemLabel> </a> </ListItem>
-        <ListItem><a href=""><SettingsIcon/> <ListItemLabel>Settings </ListItemLabel> </a> </ListItem>
-        <ListItem><a href=""><LogoutIcon/> <ListItemLabel>Logout </ListItemLabel> </a> </ListItem>
-    </List>
-    </NavWrapper>
+            <NavTitle>Account</NavTitle>
+            <List onClick={disabledNavClick} >
+                <ListItem><a><AccountIcon /> <ListItemLabel>My account </ListItemLabel> </a> </ListItem>
+                <ListItem><a><HistoryIcon /> <ListItemLabel>History </ListItemLabel> </a> </ListItem>
+                <ListItem><a><SettingsIcon /> <ListItemLabel>Settings </ListItemLabel> </a> </ListItem>
+                <ListItem><a><LogoutIcon /> <ListItemLabel>Login </ListItemLabel> </a> </ListItem>
+            </List>
+        </NavWrapper>
 
 
-  </NavBar>
+    </NavBar>
 );
 
 export default Nav;

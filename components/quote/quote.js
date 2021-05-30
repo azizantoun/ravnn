@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {QuoteLeft} from '@styled-icons/boxicons-solid/QuoteLeft';
-import {getImage,getContenType} from '../../utils/getData'
+import { QuoteLeft } from '@styled-icons/boxicons-solid/QuoteLeft';
+import { getImage, getContenType } from '../../utils/getData'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 
@@ -15,13 +15,11 @@ const BlocQuote = styled.section`
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    /* align-items: center;
-    align-content: center; */
     h2{
-        line-height:35px;
+        line-height:30px;
         font-size:20px;
         font-weight:normal;
-        margin-top:60px;
+        margin-top:40px;
         position:relative;
     }
     p{
@@ -30,7 +28,7 @@ const BlocQuote = styled.section`
     }
 `;
 
-const iconsStyle =  `
+const iconsStyle = `
     color: rgba(230,239,251,1);
     opacity:0.8;
     width:90px;
@@ -105,17 +103,17 @@ const Hashtag = styled.a`
 `;
 
 
-const renderMedia = (entry)=>{
-        const type = getContenType(entry);
-        if(type==="Book"){
-            return  <img src={getImage(entry)}/>
-        }
+const renderMedia = (entry) => {
+    const type = getContenType(entry);
+    if (type === "Book") {
+        return <img src={getImage(entry)} />
+    }
 
-        if(type=="Video"){
-            return (
-                <iframe width="560" height="315" src={entry.youtube} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-            );
-        }
+    if (type == "Video") {
+        return (
+            <iframe width="560" height="315" src={entry.youtube} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        );
+    }
 
 };
 
@@ -125,39 +123,39 @@ const renderExcerpt = (text) => {
 
 
 
-const FeaturedQuote = (props)=>{
-        return (
-            <>  
-                <BlocQuote>
-                        <div>
-                        
-                        <ForYou>
-                            For you
+const FeaturedQuote = (props) => {
+    return (
+        <>
+            <BlocQuote>
+                <div>
+
+                    <ForYou>
+                        For you
                         </ForYou>
-                        <h2>
-                        <QuoteOpen/>
-                            {props.entries.quote}
-                        </h2>
-                        <EntryDescription>
-                            {renderExcerpt(props.entries.description)}
-                        </EntryDescription>
+                    <h2>
+                        <QuoteOpen />
+                        {props.entries.quote}
+                    </h2>
+                    <EntryDescription>
+                        {renderExcerpt(props.entries.description)}
+                    </EntryDescription>
 
 
 
-                        {props.entries.tags?props.entries.tags.map((t)=>{
-                            return (<Hashtag key={t} href={`/tag/`+t}>#{t}</Hashtag>)
-                        }) 
-                        :null}
-                        </div>
-                        <div>
-                            <Media className={getContenType(props.entries)}>
-                                    {renderMedia(props.entries)}
-                            </Media>
-                        </div>
-                </BlocQuote>
-            </>
+                    {props.entries.tags ? props.entries.tags.map((t) => {
+                        return (<Hashtag key={t} href={`/tag/` + t}>#{t}</Hashtag>)
+                    })
+                        : null}
+                </div>
+                <div>
+                    <Media className={getContenType(props.entries)}>
+                        {renderMedia(props.entries)}
+                    </Media>
+                </div>
+            </BlocQuote>
+        </>
 
-        )
+    )
 }
 
 export default FeaturedQuote;

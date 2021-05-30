@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import Thumb from '../../public/images/Thumb.png';
-import {QuoteLeft} from '@styled-icons/boxicons-solid/QuoteLeft';
-import {QuoteRight} from '@styled-icons/boxicons-solid/QuoteRight';
-import {getImage,getContenType} from '../../utils/getData'
+import { QuoteLeft } from '@styled-icons/boxicons-solid/QuoteLeft';
+import { getImage, getContenType } from '../../utils/getData';
+import PlayIcon from '../PlayIcon/PlayIcon';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+
 
 
 const ContentSection = styled.section`
@@ -12,7 +12,7 @@ const ContentSection = styled.section`
     background:#FFF;
     border-radius:10px;
     border:1px solid #E6EFFB;
-    padding:30px 25px;
+    padding:25px;
     margin-top:30px;
     h2{
         line-height:35px;
@@ -27,7 +27,7 @@ const ContentSection = styled.section`
     }
 `;
 
-const iconsStyle =  `
+const iconsStyle = `
     color: rgba(230,239,251,1);
     opacity:0.8;
     width:90px;
@@ -43,20 +43,19 @@ const QuoteOpen = styled(QuoteLeft)`
 `;
 
 
-const SectionHeader = styled.div `
-
+const SectionHeader = styled.div`
 `;
 
-const SectionTitle = styled.h3 `
+const SectionTitle = styled.h3`
     font-family:"Abel";
-    font-size:18px;
+    font-size:22px;
     color:#2D2D2D;
     padding:0;
-    margin:0;
+    margin:0 0 12.5px 0;
+    font-weight:lighter;
 `;
 
-const SectionContent = styled.div `
-    margin-top:10px;
+const SectionContent = styled.div`
     display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
@@ -66,22 +65,22 @@ const SectionContent = styled.div `
 `;
 
 const Card = styled.div`
-    width:210px;
+    width:230px;
     border:1px solid #E6EFFB;
     border-radius:10px;
     padding:14px;
-    margin:5px 15px 5px 0;
+    margin:0px 15px 0px 0;
 `;
-
 const CardCover = styled.div`
-    width:180px;
-    height:200px;
+    width:200px;
+    height:155px;
     display:block;
     border-radius:10px;
     background-size:cover;
     background-repeat:no-repeat;
     background-position:center center;
     border:1px solid #E6EFFB;
+    position:relative;
 `;
 
 const CardTitle = styled.div`
@@ -96,37 +95,39 @@ const CardSubtitle = styled.div`
     margin-top:5px;
 `;
 
-const Section = (props)=>{
-        return (
+const Section = (props) => {
+    return (
 
-            <>  
-                    <ContentSection>
-                           <SectionHeader>
-                               <SectionTitle>
-                                    Audio Books for you
+        <>
+            <ContentSection>
+                <SectionHeader>
+                    <SectionTitle>
+                        Audio Books for you
                                </SectionTitle>
-                           </SectionHeader>
+                </SectionHeader>
 
-                            <SectionContent>
-                            {props.books?props.books.map((b)=>{
-                                return (<Card key={b.fields.slug} book={b}>
+                <SectionContent>
+                    {props.books ? props.books.map((b) => {
+                        return (<Card key={b.fields.slug} book={b}>
 
-                                        <CardCover style={{"background-image": `url(${getImage(b.fields)})`}}/>
-                                        <CardTitle>{b.fields.title}</CardTitle>
-                                        <CardSubtitle>{b.fields.author.fields.name}</CardSubtitle>
+                            <CardCover style={{ "backgroundImage": `url(${getImage(b.fields)})` }} >
+                                <PlayIcon />
+                            </CardCover>
+                            <CardTitle>{b.fields.title}</CardTitle>
+                            <CardSubtitle>{b.fields.author.fields.name}</CardSubtitle>
 
-                                </Card>)
-                            }) 
-                            :null}
+                        </Card>)
+                    })
+                        : null}
 
-                                    
-                                    
-                            </SectionContent>
 
-                    </ContentSection>
-            </>
 
-        )
+                </SectionContent>
+
+            </ContentSection>
+        </>
+
+    )
 }
 
 export default Section;

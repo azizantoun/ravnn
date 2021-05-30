@@ -11,17 +11,18 @@ const WelcomeNote = styled.p`
       vertical-align:middle;
   } 
 `;
-const NameWrapper= styled.span`
+const NameWrapper = styled.span`
     color:#7C8DB5;
 `;
 
-const Welcome = (props)=>{
+const Welcome = (props) => {
     return (
-    <div>
-        <WelcomeNote>
-           <img src={sun} width={40}/> <span>Welcome, </span> <NameWrapper>{props.name}!</NameWrapper>
-        </WelcomeNote>
-    </div>
+        <div>
+            <WelcomeNote>
+                <img src={sun} width={40} /> <span>Good Morning!</span>
+                {/* <NameWrapper>{props.name}!</NameWrapper> */}
+            </WelcomeNote>
+        </div>
     )
 }
 
