@@ -1,8 +1,7 @@
 import Head from 'next/head'
 import Layout from '../containers/layout/layout';
 import Explore from '../containers/explore/explore';
-
-
+import SideBar from '../containers/sidebar/Sidebar';
 
 function HomePage() {
   return (
@@ -13,6 +12,7 @@ function HomePage() {
       </Head>
       <Layout>
         <Explore />
+        <SideBar />
       </Layout>
 
 

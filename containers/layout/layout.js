@@ -20,7 +20,7 @@ const MainContent = styled.div`
   max-width: 100%;
 `;
 
-const SideBar = styled.aside`
+const Side = styled.aside`
   width: 366px;
   border-left:1px solid #E6EFFB;
   background-color:rgba(230,239,251,0.2);
@@ -36,6 +36,7 @@ const Sticky = styled.div`
 
 
 const Layout = ({ children }) => {
+  console.log(children);
   return (
     <>
       <div>
@@ -43,16 +44,13 @@ const Layout = ({ children }) => {
         <MainWrapper>
           <MainInner>
             <MainContent>
-              {children}
+              {children[0]}
             </MainContent>
-            <SideBar>
 
-
-
+            <Side>
               <Sticky></Sticky>
-
-
-            </SideBar>
+              {children[1]}
+            </Side>
           </MainInner>
 
 

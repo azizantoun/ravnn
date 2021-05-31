@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import Layout from '../../../containers/layout/layout';
 import React from 'react';
+import SideBar from '../../../containers/sidebar/sidebar';
 
 const Post = () => {
   const router = useRouter()
@@ -9,10 +10,9 @@ const Post = () => {
   return (
     <>
       <Layout>
-
-Post Page
-
-</Layout>
+        <div>Post Page</div>
+        <SideBar />
+      </Layout>
     </>
   )
 }

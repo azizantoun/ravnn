@@ -9,6 +9,7 @@ import { AccountCircle } from '@styled-icons/remix-fill/AccountCircle';
 import { History } from '@styled-icons/boxicons-regular/History';
 import { Settings2 } from '@styled-icons/evaicons-solid/Settings2';
 import { LogoutCircleR } from '@styled-icons/remix-line/LogoutCircleR';
+import Link from 'next/link'
 
 const NavBar = styled.nav`
     position:fixed;
@@ -21,16 +22,6 @@ const NavBar = styled.nav`
 `;
 
 
-const TopGradient = styled.span`
-    background: linear-gradient(0deg, rgba(2,0,36,0) 0%, rgba(244,247,249,1) 100%);
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    height:200px;
-    z-index:0;
-
-`;
 
 const NavWrapper = styled.div`
     max-height:100vh;
@@ -140,18 +131,21 @@ const disabledNavClick = () => {
 
 const Nav = () => (
     <NavBar>
-        <TopGradient />
         <Logo></Logo>
         <NavWrapper>
             <NavTitle>Explore</NavTitle>
             <List>
-                <ListItem><a href=""><ExploreIcon /> <ListItemLabel>Discover </ListItemLabel> </a> </ListItem>
+                <Link href="/">
+                    <ListItem>
+                        <ExploreIcon /> <ListItemLabel>Discover </ListItemLabel>
+                    </ListItem>
+                </Link>
                 <ListItem><a href=""><TrendingIcon /> <ListItemLabel>Trending </ListItemLabel> </a> </ListItem>
                 <ListItem><a href=""><RecommendationIcon /> <ListItemLabel>Recommendations </ListItemLabel> </a> </ListItem>
             </List>
 
 
-            <NavTitle>My Topics</NavTitle>
+            <NavTitle>Topics</NavTitle>
             <List>
                 <ListItem><a href=""><HashtagIcon /> <ListItemLabel>ProductManagement </ListItemLabel> </a> </ListItem>
                 <ListItem><a href=""><HashtagIcon /> <ListItemLabel>Politics </ListItemLabel> </a> </ListItem>
