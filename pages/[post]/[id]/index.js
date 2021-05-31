@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import Layout from '../../../containers/layout/layout';
 import React from 'react';
-import SideBar from '../../../containers/sidebar/sidebar';
+import SideBar from '../../../containers/sidebar/Sidebar';
 
 const Post = () => {
   const router = useRouter()
